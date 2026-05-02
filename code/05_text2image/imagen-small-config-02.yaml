@@ -1,0 +1,85 @@
+experiment:
+  name:                   "imagen_cc12m_small_02"
+  root_dir:               "YOUR_PATH_HERE"
+  results_dir:            "results"
+  models_dir:             "models"
+dataset:
+  dataset_name:           "CC1M4"
+  dataset_path:           "YOUR_DATASET_PATH_HERE/{01000..01242}.tar"  # ADJUST THIS LIST OF TARs
+  #dataset_path:           "YOUR_DATASET_PATH_HERE/{00600..00899}.tar" # ADJUST THIS LIST OF TARs
+  #dataset_path:           "YOUR_DATASET_PATH_HERE/{00600..01242}.tar" # ADJUST THIS LIST OF TARs
+  image_size:             128
+  shuffle_size:           20000
+  shuffle_initial:        10000
+  shard_shuffle:          True
+  num_images:             1398000 # TARs [01000-01242] -> REVIEW THIS VALUE FOR THE CORRECT NUMBER OF IMAGES
+  #num_images:            1729468 # TARs [00600-00899] -> REVIEW THIS VALUE FOR THE CORRECT NUMBER OF IMAGES
+  #num_images:            3703926 # TARs [00600-01242] -> REVIEW THIS VALUE FOR THE CORRECT NUMBER OF IMAGES
+  num_workers:            6
+  prefetch_factor:        1
+  pin_memory:             True
+  drop_last:              True
+  precomputed_embeddings: True
+train:
+  epochs:                 5
+  epoch_restart:          1           # to resume/continue an interrupted training (default=1)
+  step_restart:           0           # to resume/continue an interrupted training (default=0)
+  batch_size:             160
+  unet_number:            None        # 1 | 2 | None
+  unet1_max_batch_size:   16
+  unet2_max_batch_size:   16
+  load_checkpoint:        True
+  load_checkpoint_file:   "imagen_small_02.pth" 
+  checkpoint_file:        "imagen_small_02.pth" 
+  checkpoint_rate:        300     
+  checkpoint_strict:      False
+  checkpoint_model_only:  False
+  sampling_rate:          1000
+  image_non_blocking:     True
+  embedding_non_blocking: False
+  cudnn_benchmark:        True
+  use_ema:                True
+  lr:                     0.000015
+  eps:                    0.00000001
+  beta1:                  0.9
+  beta2:                  0.99
+  max_grad_norm:          None
+  amp:                    True
+  group_wd_params:        True
+  warmup_steps:           None
+  cosine_decay_max_steps: None
+  cond_scale:             3.0
+  sample_texts:           ['dog','cheeseburger','blue car','red flowers in a white vase','a puppy looking anxiously at a giant donut on the table', 'lizard running across the desert on two feet']
+sampling:
+  unet_number:            2    # UNet where to stop sampling (1 or 2)
+  epoch:                  1    # epoch of the model's checkpoint used for sampling
+  step:                   6000 # step  of the model's checkpoint used for sampling
+model:
+  text_encoder_name:      "google/t5-v1_1-xl"
+  image_sizes:            [32, 128]
+  cond_drop_prob:         0.1
+  timesteps:              1000        
+  unet1:
+    dim:                  128
+    cond_dim:             512
+    dim_mults:            [1, 2, 3, 4]
+    num_resnet_blocks:    3
+    layer_attns:          [False, True, True, True]
+    layer_cross_attns:    [False, True, True, True]
+    attn_heads:           8
+    ff_mult:              2
+    dropout:              0.1
+    memory_efficient:     False
+    use_linear_attn:      False
+  unet2:
+    dim:                  64
+    cond_dim:             512
+    dim_mults:            [1, 2, 4, 8]
+    num_resnet_blocks:    [2, 4, 8, 8]
+    layer_attns:          [False, False, False, True]
+    layer_cross_attns:    [False, False, False, True]
+    attn_heads:           8
+    ff_mult:              2
+    dropout:              0.1
+    memory_efficient:     True
+    use_linear_attn:      False
