@@ -1,0 +1,50 @@
+model_params:
+  name: 'VQVAE2' 
+  hidden_channels: 128
+  res_hidden_channels: 32
+  num_residual_blocks: 2
+  stride_top: 2
+  stride_bottom: 4
+  embedding_dim: 32
+  embedding_number: 512
+  patch_size: 128
+  top_latent_shape: [16,16]
+  bottom_latent_shape: [32,32]
+  num_channels: 3
+  pixelsnail_channels: 128
+  pixelsnail_res_blocks: 8
+  pixelsnail_res_channels: 128
+  pixelsnail_out_res_blocks: 0
+  pixelsnail_cond_res_blocks: 3
+  pixelsnail_amp_opt_level: 'O0'
+
+exp_params:
+  data_path: "/home/datasets/celeba"
+  dataset: "CelebA"
+  train_batch_size: 32
+  val_batch_size:   32
+  test_batch_size:  32
+  epochs: 100
+  log_interval: 100
+  optimizer: "Adam"
+  learning_rate: 3e-4
+  decay: 0.99
+  eps: 1e-5
+  beta: 1.0
+  num_workers: 4
+  pin_memory: True
+  vqvae_scheduler: "RLRonPlateau"
+  vqvae_save_file: "VQVAE2_CelebA_128x128_01"
+  save_model: True
+  pixelsnail_optimizer: "Adam"
+  pixelsnail_lr: 3e-4
+  pixelsnail_epochs: 100
+  pixelsnail_train_batch_size: 32
+  pixelsnail_dropout: 0.1
+  pixelsnail_scheduler: "CosineAnnealingWarmRestarts"
+  pixelsnail_hier_level: "top"
+  pixelsnail_save_file: "PixelSnail_CelebA_128x128_01"
+  pixelsnail_codes_path: "/home/datasets/celeba/Codebooks_CelebA_128x128_01.lmdb"
+
+
+

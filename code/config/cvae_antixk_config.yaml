@@ -1,0 +1,27 @@
+model_params:
+  name: 'ConditionalVAE'
+  in_channels: 3
+  num_attributes: 40
+  latent_dim: 128
+
+data_params:
+  data_path: "/home/datasets/celeba"
+  train_batch_size: 64
+  val_batch_size: 64
+  test_batch_size: 144
+  patch_size: 64
+  num_workers: 4
+  pin_memory: True
+
+exp_params:
+  LR: 0.001
+  weight_decay: 0.0
+  scheduler_gamma: 0.95
+  kld_weight: 1.0
+  accelerator: "gpu"
+  epochs: 100
+  manual_seed: 1265
+
+logging_params:
+  save_dir: "logs/"
+  name: "CVAE"

@@ -1,0 +1,36 @@
+model_params:
+  name: 'VQVAE'
+  encoder_hidden_dim: 128
+  residual_hidden_dim: 128
+  num_residual_layers: 2
+  num_stride2: 2
+  embedding_dim: 64
+  embedding_number: 512
+  pixelcnn_hidden_channels: 128
+  gated_layers: 15
+  patch_size: 128
+  num_channels: 3
+  beta: 1.0
+
+exp_params:
+  data_path: "/home/datasets/celeba"
+  dataset: "CelebA"
+  output_folder: 'vqvae'
+  train_batch_size: 64
+  val_batch_size:   64
+  test_batch_size:  144
+  num_epochs: 100
+  optimizer: "Adam"
+  vqvae_scheduler: "RLRonPlateau"
+  learning_rate: 3e-4
+  num_workers: 4
+  pin_memory: True
+  log_interval: 100
+  save_model: True
+  vqvae_save_file: "VQVAE_CelebA_128x128_04"
+  pixelcnn_optimizer: "Adam"
+  pixelcnn_scheduler: "CosineAnnealingWarmRestarts"
+  pixelcnn_learning_rate: 1e-3
+  pixelcnn_num_epochs: 100
+  pixelcnn_save_model: True
+  pixelcnn_save_file: "PixelCNN_CelebA_128x128_04A"
