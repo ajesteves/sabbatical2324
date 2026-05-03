@@ -1,7 +1,7 @@
-experiment_name:          "ESRGAN_Div2k_Flickr2k_05A_stage1" # Name of the experiment.
+experiment_name:          "ESRGAN_Div2k_Flickr2k_05_stage1" # Name of the experiment.
 
 root_dir:                 '.'       # Root path usef to define the other paths, such as models and results.
-data_path:                '/home/datasets/div2k_flickr2k' # Path to the dataset.
+data_path:                'OUR_DATASETS_DIR/div2k_flickr2k' # Path to the dataset.
 models_dir:               'models'  # Folder where to save the models.
 results_dir:              'results' # Folder where to save the generated images.
 

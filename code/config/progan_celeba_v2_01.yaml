@@ -1,4 +1,4 @@
-dataset_path:       "/home/datasets/celeba"
+dataset_path:       "OUR_DATASETS_DIR/celeba"
 start_image_size:   4
 lr:                 0.002 # Adam optimizer learning rate
                     # We can use batch_sizes = [32, 32, 32, 16, 16, 16, 16, 8, 4] to train 

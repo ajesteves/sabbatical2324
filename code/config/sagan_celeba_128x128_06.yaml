@@ -32,7 +32,7 @@ start_train_iteration:  0         # Iteration where (re)training starts.
 # Paths
 
 root_dir:           '.' # Root path usef to define the other paths, such as models and results.
-data_path:          '/home/datasets/celeba/balanced' # Path to the dataset.
+data_path:          'OUR_DATASETS_DIR/celeba/balanced' # Path to the dataset.
 models_dir:         'models'  # Folder where to save the models.
 results_dir:        'results' # Folder where to save the generated images.
 

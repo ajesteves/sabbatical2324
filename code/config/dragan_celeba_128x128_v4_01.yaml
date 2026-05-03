@@ -17,5 +17,5 @@ log_interval:          100     # Interval between successive logs (in iterations
 sampling_interval:     1       # Interval between image generations during training (in epochs).
 checkp_interval:       5       # Interval between saving model checkpoints (in epochs).
 experiment_name:   "DRAGAN_CelebA_128x128_v4_01A"  # Name of the experiment.
-dataset_path:      "/home/datasets/celeba_50k/img_align_celeba"   # Root directory for dataset.
+dataset_path:      "OUR_DATASETS_DIR/celeba_50k/img_align_celeba"   # Root directory for dataset.
 dataset:           "CelebA 50k"                    # Dataset used for training the models.

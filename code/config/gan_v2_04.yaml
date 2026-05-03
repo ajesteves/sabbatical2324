@@ -13,6 +13,6 @@ channels:            1      # Image channels
 sampling_interval:   1000   # Interval between image generations during training
 log_interval:        100    # Interval between successive logs
 checkp_interval:     1      # Interval between saving model checkpoints (in batches)
-data_dir_root:       "/home/datasets"  # direcytory where is the MNIST dataset
+data_dir_root:       "OUR_DATASETS_DIR"  # directory where is the MNIST dataset
 experiment_name:     "GAN_mnist_v2_04" # File where trained models will be saved
 dataset:             "MNIST"           # Dataset used for training the models

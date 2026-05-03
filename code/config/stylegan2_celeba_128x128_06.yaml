@@ -1,7 +1,7 @@
 experiment_name:           'StyleGAN2_CelebA_128x128_06'    # Name of the experiment.
 dataset_name:              'CelebA balanced'                # Dataset used for training the models.
-data_path:                 '/home/datasets/celeba/balanced' # Root directory for dataset.
-base_dir:                  '/home/esteves/sabatica2023/codigo/GANs' # Path to where the results and models folders will be created.
+data_path:                 'OUR_DATASETS_DIR/celeba/balanced' # Root directory for dataset.
+base_dir:                  'OUR_WORK_DIR' # Path to where the results and models folders will be created.
 results_dir:               'results'  # Folder where to save the generated images.
 models_dir:                'models'   # Folder where to save the models.
 delete_folders_if_exist:    False     # Delete results, models and FID folders and JSON config if they yet exist (True) or not (False). 

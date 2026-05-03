@@ -23,5 +23,5 @@ log_interval:          100     # Interval between successive logs (in iterations
 sampling_interval:     1       # Interval between image generations during training (in epochs).
 checkp_interval:       5       # Interval between saving model checkpoints (in epochs).
 experiment_name:       "WGANGP_CelebA_128x128_05" # Name of the experiment.
-dataset_path:          "/home/datasets/celeba/balanced"  # Root directory for dataset.
+dataset_path:          "OUR_DATASETS_DIR/celeba/balanced"  # Root directory for dataset.
 dataset:               "CelebA balanced"  # Dataset used for training the models.

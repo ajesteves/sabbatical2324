@@ -11,6 +11,6 @@ num_stride2:       4      # Number of convolution layers using stride=2 in gener
 log_interval:      100    # Interval between successive logs (in iterations).
 sampling_interval: 1      # Interval between image generations during training (in epochs).
 checkp_interval:   2      # Interval between saving model checkpoints (in epochs).
-experiment_name: 'LSGAN_CelebA_128x128_01' # Name of the experiment.
-dataset_path:    "/home/datasets/celeba_50k" # Root directory for dataset.
+experiment_name: 'LSGAN_CelebA_128x128_01'     # Name of the experiment.
+dataset_path:    "OUR_DATASETS_DIR/celeba_50k" # Root directory for dataset.
 dataset:         "CelebA"  # Dataset used for training the models.

@@ -5,7 +5,7 @@ model_params:
   latent_dim: 128
 
 data_params:
-  data_path: "/home/datasets/celeba"
+  data_path: "OUR_DATASETS_DIR/celeba"
   train_batch_size: 16
   val_batch_size: 16
   test_batch_size: 144

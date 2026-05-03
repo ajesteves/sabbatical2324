@@ -1,11 +1,11 @@
 experiment:
   name:                   "imagen_cc12m_small_06"
-  root_dir:               "/home/esteves/sabatica2023/codigo/text2image/imagen"
+  root_dir:               "OUR_WORK_DIR"
   results_dir:            "results"
   models_dir:             "models"
 dataset:
   dataset_name:           "CC3M77"
-  dataset_path:           "/home/datasets/cc12m_embeds/{00600..01242}.tar" # ADJUST THIS LIST OF TARs
+  dataset_path:           "OUR_DATASETS_DIR/cc12m_embeds/{00600..01242}.tar" # ADJUST THIS LIST OF TARs
   image_size:             128
   shuffle_size:           20000
   shuffle_initial:        10000
@@ -19,8 +19,8 @@ dataset:
   drop_last:              True
   precomputed_embeddings: True
 train:
-  epochs:                 20          # UNet 1 trained 10 epochs, UNet 2 trained 10 epeochs
-  epoch_restart:          11          # to resume/continue an interrupted training (default=1)
+  epochs:                 20          # UNet 1 trained X epochs, UNet 2 trained Y epeochs
+  epoch_restart:          1           # to resume/continue an interrupted training (default=1)
   step_restart:           0           # to resume/continue an interrupted training (default=0)
   batch_size:             256
   unet_number:            1           # First UNet --> alter for 2nd UNet
@@ -32,12 +32,12 @@ train:
   checkpoint_rate:        500     
   checkpoint_strict:      False
   checkpoint_model_only:  False
-  sampling_rate:          14400
+  sampling_rate:          5000
   image_non_blocking:     True
   embedding_non_blocking: False
   cudnn_benchmark:        True
   use_ema:                True
-  lr:                     0.00002       # UNet 1: 0.00003  UNet 2: 00002    ALTER TO A LOWER LR FOR UNET 2 ::::::::::::::
+  lr:                     0.00003       # UNet 1: 0.00003  UNet 2: 00002
   eps:                    0.00000001
   beta1:                  0.9
   beta2:                  0.99

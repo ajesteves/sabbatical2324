@@ -37,9 +37,9 @@
     "data": {
         "batch_size":            32,
         "num_data_points":       503104,
-        "image_url":             "file:///home/datasets/laion_aesthetics_65p_embeds_v3/img_emb_ordered/",
-        "txt_url":               "file:///home/datasets/laion_aesthetics_65p_embeds_v3/text_emb_ordered/",
-        "meta_url":              "file:///home/datasets/laion_aesthetics_65p_embeds_v3/metadata/",
+        "image_url":             "file://OUR_DATASETS_DIR/laion_aesthetics_65p_embeds_v3/img_emb_ordered/",
+        "txt_url":               "file://OUR_DATASETS_DIR/laion_aesthetics_65p_embeds_v3/text_emb_ordered/",
+        "meta_url":              "file://OUR_DATASETS_DIR/laion_aesthetics_65p_embeds_v3/metadata/",
         "splits": {
             "train":             0.90,
             "val":               0.003,
@@ -67,7 +67,7 @@
         "overwrite_data_path":   true,
         "log": {
             "log_type":          "wandb",
-            "wandb_entity":      "ajesteves",
+            "wandb_entity":      "OUR_WANDB_USER",
             "wandb_project":     "dalle2",
             "wandb_resume":      false,
             "verbose":           false
@@ -76,8 +76,8 @@
             {
                 "save_to":        "local",
                 "save_type":      "checkpoint",
-                "save_latest_to": "/home/esteves/sabatica2023/codigo/text2image/dalle2/models/dalle2_01/prior_04_latest.pth",
-                "save_best_to":   "/home/esteves/sabatica2023/codigo/text2image/dalle2/models/dalle2_01/prior_04_best.pth"
+                "save_latest_to": "OUR_WORK_DIR/models/dalle2_01/prior_04_latest.pth",
+                "save_best_to":   "OUR_WORK_DIR/models/dalle2_01/prior_04_best.pth"
             }
         ]
     }

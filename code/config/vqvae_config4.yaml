@@ -13,7 +13,7 @@ model_params:
   beta: 1.0
 
 exp_params:
-  data_path: "/home/datasets/celeba"
+  data_path: "OUR_DATASETS_DIR/celeba"
   dataset: "CelebA"
   output_folder: 'vqvae'
   train_batch_size: 64

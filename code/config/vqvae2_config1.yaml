@@ -19,7 +19,7 @@ model_params:
   pixelsnail_amp_opt_level: 'O0'
 
 exp_params:
-  data_path: "/home/datasets/celeba"
+  data_path: "OUR_DATASETS_DIR/celeba"
   dataset: "CelebA"
   train_batch_size: 32
   val_batch_size:   32
@@ -44,7 +44,7 @@ exp_params:
   pixelsnail_scheduler: "CosineAnnealingWarmRestarts"
   pixelsnail_hier_level: "top"
   pixelsnail_save_file: "PixelSnail_CelebA_128x128_01"
-  pixelsnail_codes_path: "/home/datasets/celeba/Codebooks_CelebA_128x128_01.lmdb"
+  pixelsnail_codes_path: "OUR_DATASETS_DIR/celeba/Codebooks_CelebA_128x128_01.lmdb"
 
 
 
