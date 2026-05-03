@@ -58,8 +58,8 @@ def create_image_dataset(dataset_path, nclasses, files_per_class, npy_file, outp
 
 
 if __name__ == "__main__":
-    results_path    = '/home/esteves/sabatica2023/codigo/DiffusionModels/results'
-    dataset_path    = '/home/esteves/datasets/cifar10_64x64/test'  # The actual dataset path
+    results_path    = 'OUR_WORK_DIR_HERE/results'
+    dataset_path    = 'OUR_DATASETS_ROOT/cifar10_64x64/test'  # The actual dataset path
     nclasses        = 10          # Number of class subfolders to process
     files_per_class = 560         # Number of images to select per class
     npy_file        = f'{results_path}/cifar10test_5600_real_images.npy'  # Output file name

@@ -20,8 +20,8 @@ def load_npy_as_tensor(file_images):
     return tensor
 
 
-file_real_images      = '/home/esteves/sabatica2023/codigo/DiffusionModels/results/cifar10test_5600_real_images.npy'  
-file_generated_images = '/home/esteves/sabatica2023/codigo/DiffusionModels/results/CFG_diffusion_04/samples_5600_epoch_100_w_1.0.npy'
+file_real_images      = 'OUR_WORK_DIR_HERE/results/cifar10test_5600_real_images.npy'  
+file_generated_images = 'OUR_WORK_DIR_HERE/results/CFG_diffusion_04/samples_5600_epoch_100_w_1.0.npy'
 
 real_images = load_npy_as_tensor(file_real_images)
 gen_images  = load_npy_as_tensor(file_generated_images)

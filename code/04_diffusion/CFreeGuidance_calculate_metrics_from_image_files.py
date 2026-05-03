@@ -26,8 +26,8 @@ metrics_dict = None
 
 try:
     metrics_dict = torch_fidelity.calculate_metrics(
-        input1='/home/esteves/sabatica2023/codigo/DiffusionModels/results/CFG_diffusion_04/generated_images',
-        input2='/home/esteves/sabatica2023/codigo/DiffusionModels/results/cifar10test_5600_real_images',
+        input1='OUR_WORK_DIR_HERE/results/CFG_diffusion_04/generated_images',
+        input2='OUR_WORK_DIR_HERE/results/cifar10test_5600_real_images',
         cuda=True,
         isc=True,
         fid=True,

@@ -64,7 +64,7 @@ def get_celeba_config():
   config.experiment = experiment = ml_collections.ConfigDict()
 
   experiment.experiment_name     = "CFG_diffusion_02"
-  experiment.root_dir            = "/home/esteves/sabatica2023/codigo/DiffusionModels"
+  experiment.root_dir            = "OUR_WORK_DIR_HERE"
   experiment.results_dir         = "results"
   experiment.models_dir          = "models"
   experiment.mode                = "sampling"   # "train" or "sampling" or "summary"
@@ -86,7 +86,7 @@ def get_celeba_config():
   training.log_interval          = 100       # Interval between successive logs (in iterations/batches).
 
   # data ..........................................................
-  data.data_path                 = "/home/datasets/cifar10_64x64/train" # Path to the dataset.
+  data.data_path                 = "OUR_DATASETS_ROOT/cifar10_64x64/train" # Path to the dataset.
   data.num_workers               = 4         # Number of workers used to load training data.
   data.classes                   = 10        # Number of image classes.
   data.image_size                = 64        # Height/Width of each image.
@@ -116,10 +116,10 @@ def get_celeba_config():
   sampling.batch_size            = 20        # Batch size during the sampling process.
   sampling.class_labels          = 'all'     # Labels of the images to generate: 'all', 'all_random', [list of values].
   sampling.dropout_prob          = 0.0       # Dropout probability.
-  sampling.fid                   = True      # Generate samples for quantative evaluation.
+  sampling.fid                   = True      # Generate samples for quantitative evaluation.
   sampling.num_images            = 5600      # Number of images to generate during sampling.
   sampling.epoch                 = 100       # Epoch ID whose model will be use during sampling.
-  sampling.saved_model           = 'CFG_diffusion_02_epoch100_step00312501.pth' # File (NOT path) containing the model to use during sampling.
+  sampling.saved_model           = 'OUR_MODEL_NAME_HERE.pth' # File (NOT path) containing the model to use during sampling.
 
   training.eval_images = training.eval_images_per_class * data.classes # Images to generate when evaluating the model.
 
@@ -248,32 +248,6 @@ class GaussianDiffusion(nn.Module):
         self.sqrt_recipm1_alphas_bar = torch.exp(self.log_one_minus_alphas_bar - self.log_sqrt_alphas_bar)
         # self.sqrt_recipm1_alphas_bar = torch.sqrt(1.0 / self.alphas_bar - 1)
 
-        # ############################################################################
-        #print(f'[DEBUG] DEVICE betas: {self.betas.device}')
-        #print(f'[DEBUG] DEVICE alphas: {self.alphas.device}')
-        #print(f'[DEBUG] DEVICE log_alphas: {self.log_alphas.device}')
-        #print(f'[DEBUG] DEVICE log_alphas_bar: {self.log_alphas_bar.device}')
-        #print(f'[DEBUG] DEVICE alphas_bar: {self.alphas_bar.device}')
-        #print(f'[DEBUG] DEVICE log_alphas_bar_prev: {self.log_alphas_bar_prev.device}')
-        #print(f'[DEBUG] DEVICE alphas_bar_prev: {self.alphas_bar_prev.device}')
-        #print(f'[DEBUG] DEVICE log_one_minus_alphas_bar_prev: {self.log_one_minus_alphas_bar_prev.device}')
-        #print(f'[DEBUG] DEVICE log_sqrt_alphas: {self.log_sqrt_alphas.device}')
-        #print(f'[DEBUG] DEVICE sqrt_alphas: {self.sqrt_alphas.device}')
-        #print(f'[DEBUG] DEVICE log_sqrt_alphas_bar: {self.log_sqrt_alphas_bar.device}')
-        #print(f'[DEBUG] DEVICE sqrt_alphas_bar: {self.sqrt_alphas_bar.device}')
-        #print(f'[DEBUG] DEVICE log_one_minus_alphas_bar: {self.log_one_minus_alphas_bar.device}')
-        #print(f'[DEBUG] DEVICE sqrt_one_minus_alphas_bar: {self.sqrt_one_minus_alphas_bar.device}')
-        #print(f'[DEBUG] DEVICE tilde_betas: {self.tilde_betas.device}')
-        #print(f'[DEBUG] DEVICE log_tilde_betas_clipped: {self.log_tilde_betas_clipped.device}')
-        #print(f'[DEBUG] DEVICE mu_coef_x0: {self.mu_coef_x0.device}')
-        #print(f'[DEBUG] DEVICE mu_coef_xt: {self.mu_coef_xt.device}')
-        #print(f'[DEBUG] DEVICE vars: {self.vars.device}')
-        #print(f'[DEBUG] DEVICE coef1: {self.coef1.device}')
-        #print(f'[DEBUG] DEVICE coef2: {self.coef2.device}')
-        #print(f'[DEBUG] DEVICE sqrt_recip_alphas_bar: {self.sqrt_recip_alphas_bar.device}')
-        #print(f'[DEBUG] DEVICE sqrt_recipm1_alphas_bar: {self.sqrt_recipm1_alphas_bar.device}')
-        # ############################################################################
-
     @staticmethod
     def _extract(coef: torch.Tensor, t: torch.Tensor, x_shape: tuple) -> torch.Tensor:
         """
@@ -287,11 +261,6 @@ class GaussianDiffusion(nn.Module):
            A tensor of shape [batch_size,1,...] where the length has K dims.
         """
         assert t.shape[0] == x_shape[0]
-
-        # #############################################################################
-        #print(f'[DEBUG] DEVICE OF coef: {coef.device}')
-        #print(f'[DEBUG] DEVICE OF t:   {t.device}')
-        # #############################################################################
 
         neo_shape    = torch.ones_like(torch.tensor(x_shape)).to(t.device)
         neo_shape[0] = x_shape[0]
@@ -866,12 +835,6 @@ class Unet(nn.Module):
         )
 
     def forward(self, x:torch.Tensor, t:torch.Tensor, cemb:torch.Tensor) -> torch.Tensor:
-
-        # ####################################################################################
-        # print(f'[DEBUG] U-Net input x    shape: {x.shape}', end = ' | ')
-        # print(f'[DEBUG] U-Net input t    shape: {t.shape}', end = ' | ')
-        # print(f'[DEBUG] U-Net input cemb shape: {cemb.shape}')
-        # #####################################################################################
 
         temb = self.temb_layer(timestep_embedding(t, self.hidden_ch))
         cemb = self.cemb_layer(cemb)
@@ -1542,15 +1505,6 @@ class Trainer():
                     # gathered_samples: List of length 'world_size' where each element is [CLASSES, 8, CHANNELS, IMG_SIZE, IMG_SIZE]
                     # all_samples: List of length 'world_size' where each element is [CLASSES, 8, CHANNELS, IMG_SIZE, IMG_SIZE]
 
-                    # #################################################################################
-                    # print(f'[DEBUG] world size: {get_world_size()}')
-                    # print(f'[DEBUG] each_device_batch: {each_device_batch}')
-                    # print(f'[DEBUG] "generated" shape: {generated.shape}')
-                    # print(f'[DEBUG] "img" shape: {img.shape}')
-                    # print(f'[DEBUG] "gathered_samples" length: {len(gathered_samples)} | gathered_samples[0] shape: {gathered_samples[0].shape}')
-                    # print(f'[DEBUG] "all_samples" len: {len(all_samples)} | all_samples[0] shape: {all_samples[0].shape}')
-                    # #################################################################################
-
                     samples = torch.concat(all_samples, dim = 1).reshape(
                         self.config.training.eval_images,
                         self.config.data.channels,
@@ -2050,8 +2004,8 @@ def main():
             config_wandb = config
 
             wandb.init(
-                project = 'CFG_diffusion',
-                entity  = 'ajesteves',
+                project = 'OUR_WANDB_PROJECT_ID',
+                entity  = 'OUR_WANDB_ENTITY',
                 config  = config_wandb,
                 id      = config.experiment.experiment_name,
                 resume  = 'allow',
