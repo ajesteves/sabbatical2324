@@ -1,0 +1,115 @@
+{
+    "decoder": {
+        "unets": [
+            {
+                "dim":             128,
+                "cond_dim":        64,
+                "image_embed_dim": 512,
+                "text_embed_dim":  512,
+                "cond_on_text_encodings": true,
+                "max_text_len":    77,
+                "channels":        3,
+                "dim_mults":       [1, 2, 4, 8],
+                "attn_dim_head":   32,
+                "attn_heads":      16
+            }
+        ],
+        "clip": {
+            "make":              "open_clip",
+            "model":             "ViT-B-32-quickgelu",
+            "pretrained":        "laion400m_e32"
+        },
+        "image_sizes":          [64],
+        "channels":             3,
+        "timesteps":            1000,
+        "loss_type":            "l2",
+        "beta_schedule":        ["cosine"],
+        "learned_variance":     true
+    },
+    "data": {
+        "webdataset_base_url":  "file:///home/datasets/laion_aesthetics_65p_wds/{}.tar",
+        "img_embeddings_url":   "file:///home/datasets/laion_aesthetics_65p_embeds_v2/img_emb_ordered/",
+        "num_workers":          4,
+        "start_shard":          0,
+        "end_shard":            61,
+        "shard_width":          5,
+        "index_width":          4,
+        "splits": {
+            "train":            0.75,
+            "val":              0.15,
+            "test":             0.1
+        },
+        "shuffle_train":        true,
+        "resample_train":       false,
+        "preprocessing": {
+            "RandomResizedCrop": {
+                "size":         [128, 128],
+                "scale":        [0.75, 1.0],
+                "ratio":        [1.0, 1.0]
+            },
+            "ToTensor":         true
+        }
+    },
+    "train": {
+        "epochs":               20,
+        "batch_size":           32,
+        "lr":                   0.0001,
+        "wd":                   0.01,
+        "max_grad_norm":        0.5,
+        "save_every_n_samples": 100000,
+        "n_sample_images":      6,
+        "epoch_samples":        null,
+        "validation_samples":   null,
+        "use_ema":              true,
+        "ema_beta":             0.99,
+        "amp":                  false,
+        "unet_training_mask":   [true]
+    },
+    "evaluate": {
+        "n_evaluation_samples": 100,
+        "FID": {
+            "feature":          64
+        },
+        "IS": {
+            "feature":          64,
+            "splits":           10
+        },
+        "KID": {
+            "feature":          64,
+            "subset_size":      10
+        },
+        "LPIPS": {
+            "net_type":         "vgg",
+            "reduction":        "mean"
+        }
+    },
+    "tracker": {
+        "overwrite_data_path":  true,
+
+        "log": {
+            "log_type":         "wandb",
+            "wandb_entity":     "ajesteves",
+            "wandb_project":    "dalle2",
+            "verbose":          true
+        },
+
+        "load": {
+            "load_from":        null
+        },
+
+        "save": 
+            [
+                {
+                    "save_to":          "wandb",
+                    "save_latest_to":   "decoder_latest.pth"
+                },
+                {
+                    "save_to":          "local",
+                    "save_latest_to":   "/home/esteves/sabatica2023/codigo/text2image/dalle2/models/dalle2_01/decoder_02_latest.pth",
+                    "save_best_to":     "/home/esteves/sabatica2023/codigo/text2image/dalle2/models/dalle2_01/decoder_02_best.pth",
+                    "save_meta_to":     "/home/esteves/sabatica2023/codigo/text2image/dalle2/models/dalle2_01",
+                    "save_type":        "model"
+                }
+            ]
+    }
+}

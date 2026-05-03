@@ -1,0 +1,84 @@
+{
+    "prior": {
+        "clip": {
+            "make":              "open_clip",
+            "model":             "ViT-B-32-quickgelu",
+            "pretrained":        "laion400m_e32"
+        },
+        "net": {
+            "dim":               512,
+            "depth":             12,
+            "num_timesteps":     1000,
+            "max_text_len":      77,
+            "num_time_embeds":   1,
+            "num_image_embeds":  1,
+            "num_text_embeds":   1,
+            "dim_head":          64,
+            "heads":             12,
+            "ff_mult":           4,
+            "norm_out":          true,
+            "attn_dropout":      0.05,
+            "ff_dropout":        0.05,
+            "final_proj":        true,
+            "normformer":        true,
+            "rotary_emb":        true
+        },
+        "image_embed_dim":             512,
+        "image_size":                  64,
+        "image_channels":              3,
+        "timesteps":                   1000,
+        "sample_timesteps":            64,
+        "cond_drop_prob":              0.2,
+        "loss_type":                   "l2",
+        "predict_x_start":             true,
+        "beta_schedule":               "cosine",
+        "condition_on_text_encodings": false
+    },
+    "data": {
+        "batch_size":            32,
+        "num_data_points":       503104,
+        "image_url":             "file:///home/datasets/laion_aesthetics_65p_embeds_v3/img_emb_ordered/",
+        "txt_url":               "file:///home/datasets/laion_aesthetics_65p_embeds_v3/text_emb_ordered/",
+        "meta_url":              "file:///home/datasets/laion_aesthetics_65p_embeds_v3/metadata/",
+        "splits": {
+            "train":             0.90,
+            "val":               0.003,
+            "test":              0.097
+        }
+    },
+    "train": {
+        "epochs":                200,
+        "lr":                    0.00005,
+        "wd":                    0.0602,
+        "max_grad_norm":         0.5,
+        "use_ema":               true,
+        "ema_beta":              0.9999,
+        "ema_update_after_step": 50,
+        "ema_update_every":      10,
+        "warmup_steps":          50,
+        "amp":                   false,
+        "log_every_steps":       100,
+        "eval_every_steps":      5000,
+        "save_every_steps":      5000,
+        "eval_timesteps":        [64, 250],
+        "random_seed":           84513
+    },
+    "tracker": {
+        "overwrite_data_path":   true,
+        "log": {
+            "log_type":          "wandb",
+            "wandb_entity":      "ajesteves",
+            "wandb_project":     "dalle2",
+            "wandb_resume":      false,
+            "verbose":           false
+        },
+        "save": [
+            {
+                "save_to":        "local",
+                "save_type":      "checkpoint",
+                "save_latest_to": "/home/esteves/sabatica2023/codigo/text2image/dalle2/models/dalle2_01/prior_04_latest.pth",
+                "save_best_to":   "/home/esteves/sabatica2023/codigo/text2image/dalle2/models/dalle2_01/prior_04_best.pth"
+            }
+        ]
+    }
+}
