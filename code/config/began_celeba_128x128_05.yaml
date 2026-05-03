@@ -1,0 +1,23 @@
+batch_size:            64      # batch size during training.
+image_size:            128     # spatial size of training images;
+                               # all images will be resized to this size using a transformer.
+z_dim:                 100     # size of z latent vector (size of generator input).
+disc_channels:         64      # base number of discriminator channels.
+gen_channels:          64      # base number of generator channels.
+disc_hidden_size:      128     # bottleneck dimension of discriminator.
+lr:                    0.0001  # Learning rate for optimizers.
+beta1:                 0.5     # beta1 hyperparameter for Adam optimizers.
+beta2:                 0.999   # beta2 hyperparameter for Adam optimizers.
+lr_decay_interval:     5       # decay learning rate after this number of epochs.
+lr_lower_bound:        0.00005 # learning rate lower value, after that it is replaced at initial value.
+manual_seed:           42      # manual seed.
+gamma:                 0.4     # balance between discriminator and generator (0.5).
+lambda_k:              0.0005  # learning rate of k.
+epochs:                100     # Number of training epochs.
+channels:              3       # Number of channels in the training images;
+log_interval:          100     # Interval between successive logs (in iterations).
+sampling_interval:     1       # Interval between image generations during training (in epochs).
+checkp_interval:       1       # Interval between saving model checkpoints (in epochs).
+experiment_name:   "BEGAN_CelebA_128x128_05"           # Name of the experiment.
+dataset_path:      "/home/datasets/celeba_50k/img_align_celeba"   # Root directory for dataset.
+dataset:           "CelebA 50k"                        # Dataset used for training the models.

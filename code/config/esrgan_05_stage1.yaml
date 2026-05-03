@@ -1,0 +1,49 @@
+experiment_name:          "ESRGAN_Div2k_Flickr2k_05A_stage1" # Name of the experiment.
+
+root_dir:                 '.'       # Root path usef to define the other paths, such as models and results.
+data_path:                '/home/datasets/div2k_flickr2k' # Path to the dataset.
+models_dir:               'models'  # Folder where to save the models.
+results_dir:              'results' # Folder where to save the generated images.
+
+image_size:                128    # The height / width of the high-resolution images.
+channels:                  3      # Number of channels in the training images.
+batch_size:                16     # Batch size.
+sample_batch_size:         1      # Sample batch size.
+normalize_images:          False  # Normalize input images (True) or not (False).
+epochs:                    30     # Number of epochs to train for.
+start_epoch:               0      # Number of the epoch where training (re)starts.
+scale_factor:              4      # Scale factor in of the super resolution.
+d_conv_dim:                64     # Number of channels in discriminator hidden layers.
+g_conv_dim:                64     # Number of channels in generator hidden layers.
+nf:                        64     # Number of input features in the first RRDB of the generator. 
+gc:                        32     # Number of output features in all RRDBs of the generator. 
+g_rrdb_blocks:             23     # Number of RRDB blocks in the generator.
+d_conv_blocks:             4      # Number of Convolutional blocks in the discriminator.
+
+beta1:                     0.9    # Adam beta1 coefficient used for computing running averages of gradient and its square.
+beta2:                     0.999  # Adam beta2 coefficient used for computing running averages of gradient and its square.
+weight_decay:              0.01   # Weight decay.
+
+p_lr:                      0.00005 # Learning rate when training a PSNR-based generator                  (stage 1).
+p_content_loss_factor:     1      # Content loss factor when training a PSNR-based generator            (stage 1).
+p_perceptual_loss_factor:  0      # Perceptual loss factor when training a PSNR-based generator         (stage 1).
+p_adversarial_loss_factor: 0      # Adversarial loss factor when training a PSNR-based generator        (stage 1).
+                                  # Epochs where the learning rate is reduced to 1/gamma of the
+                                  #   current value when training a PSNR-based generator                (stage 1).
+p_decay_iter:              [30, 40] 
+p_gamma:                   0.8    # The learning rate decay factor when training a PSNR-based generator (stage 1). 
+
+g_lr:                      0.0002 # Learning rate when when training a GAN-based generator              (stage 2).
+g_content_loss_factor:     0.1    # Content loss factor when training a GAN-based generator             (stage 2).
+g_perceptual_loss_factor:  1      # Perceptual loss factor when training a GAN-based generator          (stage 2).
+g_adversarial_loss_factor: 0.05   # Adversarial loss factor when training a GAN-based generator         (stage 2).
+                                  # Epochs where the learning rate is reduced to 1/gamma of the
+                                  #   current value when training a GAN-based generator                 (stage 2).
+g_decay_iter:              [5, 8, 12, 16]
+g_gamma:                   0.8    # The learning rate decay factor when training a GAN-based generator  (stage 2). 
+
+PSNR_or_GAN_generator:     True   # Train a PSNR-based generator (True) or a GAN-based generator (False).
+
+log_interval:              100    # Interval between successive logs (in iterations).
+sampling_interval:         1      # Interval between image generations during training (in epochs).
+checkp_interval:           1      # Interval between saving model checkpoints (in epochs).

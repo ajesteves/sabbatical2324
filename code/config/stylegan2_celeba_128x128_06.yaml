@@ -1,0 +1,57 @@
+experiment_name:           'StyleGAN2_CelebA_128x128_06'    # Name of the experiment.
+dataset_name:              'CelebA balanced'                # Dataset used for training the models.
+data_path:                 '/home/datasets/celeba/balanced' # Root directory for dataset.
+base_dir:                  '/home/esteves/sabatica2023/codigo/GANs' # Path to where the results and models folders will be created.
+results_dir:               'results'  # Folder where to save the generated images.
+models_dir:                'models'   # Folder where to save the models.
+delete_folders_if_exist:    False     # Delete results, models and FID folders and JSON config if they yet exist (True) or not (False). 
+load_trained_model:         False     # Load trained model from file (True) or not (False).
+load_model_from:            None      # Path to the model to be loaded if 'load_trained_model=True'. 
+image_size:                 128       # Spatial size of training images.
+crop_size:                  None      # Size used to crop original images of the dataset.
+transparent:                False     # Train with images in RGBA format containing an alpha layer (True) or not (False).
+filters_scaling_factor:     16        # Scaling factor used to obtain the number of filters in the model layers.
+featuremaps_max:            512       # Maximum value of number of feature maps (or filters) to be considered.
+epochs:                     100       # Number of training epochs.
+batch_size:                 32        # Batch size during training.
+gradient_accumulate_every:  1         # Number of gradient calculations per iteration (to tradeoff a small batch size).
+lr:                         0.0002    # Learning rate applied in the generator optimization.
+lr_map_network:             0.1       # Learning rate applied in the mapping network optimization.
+lr_disc_mult:               1.5       # Scaling factor applied to the generator LR to obtain the discriminator LR.
+relative_disc_losses:       False     # Use discriminator losses relative to mean value of the discriminator output (True) or absolute losses (False).
+path_length_regulation:     True      # Apply a path length regularization term to the generator loss (True) or not (False).
+pl_every_steps:             20        # Interval (in steps) between sucessive applications of the path length regularization term.
+contrastive_regulation:     False     # Apply a contrastive regularization term to the discriminator loss (True) or not (False).
+gp_every_steps:             4         # Interval (in steps) between sucessive applications of the gradient penalty term to the discriminator loss.
+latent_dim:                 512       # Latent vectors dimension.
+vq_disc_layers:             []        # List with IDs of the discriminator layers to apply vector quantization. Example: [1,2].
+vq_codebook_size:           256       # Number of possible values that the vectorization/discretization can assume.
+attn_layers:                []        # List of IDs of discriminator layers to which self-attention is added after its output.
+                                      # Self-attention is also added to the symmetric layers of the generator. Example: [1,2].
+initial_constant:           True      # Instantiate the initial constant at the generator beginning (True) or not (False).
+aug_prob:                   0.0       # Probability of applying the augmentation transformations.
+aug_types:                  ['translation', 'cutout']  # List with the types of augmentations to apply.
+generator_top_k:            False     # Zero out the gradient contribution from a percentage of samples classified 
+                                      # as fake by the discriminator (True) or not (False). The idea is to improve generator optimization.
+generator_top_k_gamma:      0.99      # Gamma value that controls how top-k decreases from using a full batch of samples to using a fraction of samples. 
+generator_top_k_frac:       0.5       # Target fraction of sample to zero out during the top-k technique.
+dual_contrastive_loss:      False     # Use contrastive loss between real and fake logits (True) or not (False).
+dataset_aug_prob:           0.0       # Dataset data augmentation probability.
+num_workers:                None      # Number of workers used in the dataset DataLoader.
+checkp_interval:            5         # Interval between saving model checkpoints (in epochs).
+log_interval:               100       # Interval between successive logs (in steps).
+evaluate_every_steps:       1000      # Interval between evaluations (in steps). 
+generate:                   False     # Generate images ONLY with a pretrained model (True) or train the model (False).
+grid_size:                  5         # At every evaluation step, generate a grid of images with size: grid_size x grid_size. 
+num_grids_generate:         1         # Number of grids of images to generate at every evaluation step.     
+generate_interpolation:     False     # Generate an interpolation video between two random points in latent space (True) or not (False).
+interpolation_steps:        100       # Number of frames to consider when generating an interpolation video between two points in latent space.
+save_frames:                False     # Save each frame of the interpolation video to a separate file (True) or not(False).
+truncation_psi:             0.90      # Psi value used in style sampling truncation (psi=1 <=> complete image diversity, psi=0 <=> no diversity).
+mixed_prob:                 0.70      # Probability of retrieving the latent Z vectors from a list that mixes two noise lists. ????  
+fp16:                       False     # Use mixed precision (FP16 e FP32) in calculations (True) or only FP32 (False).
+multi_gpus:                 False     # Train the model with multiple GPUs (True) or single GPU (False).
+calculate_fid_interval:     1000      # Interval between calculations of the FID metric. If set to 'None' FID is not calculated. 
+calculate_fid_num_images:   12800     # Number of images to use during FID calculation.
+clear_fid_cache:            False     # Remove existing files used in FID calculation and recreate directories (True) or not (False).
+seed:                       42        # Seed value for reproducible results.

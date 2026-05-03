@@ -1,0 +1,19 @@
+epochs:                300     # Number of training epochs.
+batch_size:            32      # batch size during training.
+image_size:            128     # spatial size of training images.
+channels:              3       # Number of channels in the training images.
+crop_size:             128     # Size used to crop original images of the dataset.
+z_dim:                 256     # size of z latent vector.
+w_dim:                 256     # size of w intermediate latent vector.
+lr_m:                  0.001   # Learning rate for mapping network optimizer.
+lr_g:                  0.001   # Learning rate for generator optimizer.
+lr_d:                  0.001   # Learning rate for discriminator optimizer.
+beta1:                 0.0     # beta1 hyperparameter for Adam optimizers.
+beta2:                 0.99    # beta2 hyperparameter for Adam optimizers.
+lambda_gp:             10      # Gradient penalty weight.
+log_interval:          100     # Interval between successive logs (in iterations).
+checkp_interval:       50      # Interval between saving model checkpoints (in epochs).
+sampling_interval:     50      # Interval between image generations during training (in epochs).
+experiment_name:       "STYLEGAN2_WClothes_128x128_01" # Name of the experiment.
+dataset_path:          "/home/datasets/women_clothes"  # Root directory for dataset.
+dataset:               "Woman Clothes"                 # Dataset used for training the models.

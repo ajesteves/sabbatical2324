@@ -1,0 +1,43 @@
+# Model hyperparameters
+
+model:              'sagan'   # The model name: 'sagan'   or 'qgan'.
+adv_loss:           'hinge'   # The loss to use for model optimization: 'wgan-gp' or 'hinge'.
+image_size:         128       # The height and width of the images.
+channels:           3         # Number of channels in the training images.
+crop_size:          128       # Size used to crop original images of the dataset.
+z_dim:              128       # Size of z latent vector (size of generator input).
+d_conv_dim:         64        # Number of channels in discriminator hidden layers.
+g_conv_dim:         64        # Number of channels in generator hidden layers.
+lambda_gp:          10        # Gradient penalty weight.
+ncritic:            2         # Discriminator optimization iterations per generator iteration.
+
+# Training parameters
+
+experiment_name:    "SAGAN_CelebA_128x128_06" # Name of the experiment.
+batch_size:         64        # Batch size during training.
+epochs:             100       # Number of training epochs.
+d_lr:               0.0004    # Learning rate for discriminator optimizer.
+g_lr:               0.0002    # Learning rate for generator optimizer.
+lr_decay:           0.95      # Learning rate decay.
+beta1:              0.0       # beta1 hyperparameter for Adam optimizers.
+beta2:              0.999     # beta2 hyperparameter for Adam optimizers.
+
+# Miscelaneous
+
+dataset:               'celeb'    # Dataset name: 'lsun', 'celeb'
+parallel:               False     # Run on multiple GPUs if available (True) or not (False).
+num_workers:            2         # Number of workers to use when loading data from dataloader
+start_train_iteration:  0         # Iteration where (re)training starts.
+
+# Paths
+
+root_dir:           '.' # Root path usef to define the other paths, such as models and results.
+data_path:          '/home/datasets/celeba/balanced' # Path to the dataset.
+models_dir:         'models'  # Folder where to save the models.
+results_dir:        'results' # Folder where to save the generated images.
+
+# Step sizes
+
+log_interval:          100     # Interval between successive logs (in iterations).
+sampling_interval:     5       # Interval between image generations during training (in epochs).
+checkp_interval:       5       # Interval between saving model checkpoints (in epochs).

@@ -1,0 +1,16 @@
+num_epochs:        200    # Number of training epochs
+batch_size:        128    # Batch size during training.
+lr:                0.0002 # Learning rate for optimizers.
+beta1:             0.5    # Beta1 hyperparameter for Adam optimizers.
+beta2:             0.999  # Beta2 hyperparameter for Adam optimizers.
+z_dim:             100    # Size of z latent vector (size of generator input).
+image_size:        128     # Spatial size of training images. 
+num_channels:      3      # Number of channels in the training images;
+                          # All images will be resized to this size using a transformer.
+num_stride2:       4      # Number of convolution layers using stride=2 in generator.
+log_interval:      100    # Interval between successive logs (in iterations).
+sampling_interval: 1      # Interval between image generations during training (in epochs).
+checkp_interval:   2      # Interval between saving model checkpoints (in epochs).
+experiment_name: 'LSGAN_CelebA_128x128_01' # Name of the experiment.
+dataset_path:    "/home/datasets/celeba_50k" # Root directory for dataset.
+dataset:         "CelebA"  # Dataset used for training the models.

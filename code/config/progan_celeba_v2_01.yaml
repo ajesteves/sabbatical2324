@@ -1,0 +1,21 @@
+dataset_path:       "/home/datasets/celeba"
+start_image_size:   4
+lr:                 0.002 # Adam optimizer learning rate
+                    # We can use batch_sizes = [32, 32, 32, 16, 16, 16, 16, 8, 4] to train 
+                    # until 1024x1024, but these values depend on our GPU VRAM.
+batch_sizes:        [32, 32, 32, 16, 16, 8] 
+image_size:         128
+channels_image:     3
+z_dim:              512  # it is 512 in the original paper
+in_channels:        512  # it is 512 in the original paper
+lambda_gp:          10
+progressive_epochs: [30, 30, 30, 30, 50, 50]
+n_label:            1      # Number of classes (does not apply in CelebA case)
+n_critic:           1      # Number of optimization iterations of the discriminator 
+                           # per optimization iteration of the generator
+beta1:              0.01   # Adam decay of first order momentum of gradient
+beta2:              0.99   # Adam decay of first order momentum of gradient
+sampling_interval:  1000   # Interval between image generations during training
+log_interval:       100    # Interval between successive logs
+experiment_name:    "PROGAN_CelebA_v2_01" # File where trained models will be saved
+dataset:            "CelebA"              # Dataset used for training the models

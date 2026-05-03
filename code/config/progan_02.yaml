@@ -1,0 +1,18 @@
+dataset_path:       "/home/datasets/women_clothes"
+start_image_size:   4
+lr:                 0.001 # Adam optimizer learning rate
+                    # We can use batch_sizes = [32, 32, 32, 16, 16, 16, 16, 8, 4] to train 
+                    # until 1024x1024, but these values depend on our GPU VRAM.
+batch_sizes:        [32, 32, 32, 16, 16, 16, 4] 
+image_size:         256
+channels_image:     3
+z_dim:              256  # it is 512 in the original paper
+in_channels:        256  # it is 512 in the original paper
+lambda_gp:          10
+progressive_epochs: [30, 30, 30, 30, 30, 30, 30]
+beta1:              0.0    # Adam decay of first order momentum of gradient
+beta2:              0.99   # Adam decay of first order momentum of gradient
+sampling_interval:  1000   # Interval between image generations during training
+log_interval:       100    # Interval between successive logs
+experiment_name:    "PROGAN_clothes_02B" # File where trained models will be saved
+dataset:            "WOMEN CLOTHES"     # Dataset used for training the models
