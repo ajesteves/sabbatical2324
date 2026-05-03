@@ -10,8 +10,8 @@ import pandas as pd
 
 if __name__ == "__main__":
 
-    input_dir       = "/home/datasets/laion_aesthetics_65plus/"
-    output_dir      = "/home/datasets/laion_aesthetics_65p_wds/"
+    input_dir       = "OUR_DATASETS_DIR/laion_aesthetics_65plus/"
+    output_dir      = "OUR_DATASETS_DIR/laion_aesthetics_65p_wds/"
     csv_file        = "laion_aesthetics_65plus_list_files.csv"
     image_extension = "jpg"
 

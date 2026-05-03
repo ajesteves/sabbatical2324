@@ -11,8 +11,8 @@ import pandas as pd
 
 if __name__ == "__main__":
 
-    input_dir       = "/home/datasets/laion_aesthetics_65plus/"
-    output_dir      = "/home/datasets/laion_aesthetics_65p_wds/"
+    input_dir       = "OUR_DATASETS_DIR/laion_aesthetics_65plus/"
+    output_dir      = "OUR_DATASETS_DIR/laion_aesthetics_65p_wds/"
     csv_file        = "laion_aesthetics_65plus_list_files.csv"
     image_extension = "jpg"
 
@@ -39,7 +39,7 @@ if __name__ == "__main__":
     # Equivalent to the following shell command: 
     img2dataset \
         --url_list=laion_aesthetics_65plus_list_files.csv \
-        --output_folder=/home/datasets/laion_aesthetics_65p_wds/ \
+        --output_folder=OUR_DATASETS_DIR/laion_aesthetics_65p_wds/ \
         --processes_count=8 \
         --thread_count=16 \
         --image_size=256 \

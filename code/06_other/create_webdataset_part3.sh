@@ -4,8 +4,8 @@
 # The output are the numpy arrays with the embeddings saved into NPY files.
 
 clip-retrieval inference \
-	--input_dataset="file:///home/datasets/laion_aesthetics_65p_wds/{00000..00061}.tar" \
-	--output_folder=/home/datasets/laion_aesthetics_65p_embeds_v3 \
+	--input_dataset="file://OUR_DATASETS_DIR/laion_aesthetics_65p_wds/{00000..00061}.tar" \
+	--output_folder=OUR_DATASETS_DIR/laion_aesthetics_65p_embeds_v3 \
 	--input_format=webdataset \
 	--batch_size=32 \
 	--num_prepro_workers=1 \

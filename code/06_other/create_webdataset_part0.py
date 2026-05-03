@@ -11,4 +11,4 @@ for n in range(64):
     url  = os.path.join(base_url, file)
     print(url)
     subprocess.run(["wget", url])
-    subprocess.run(["mv", file, "/home/datasets/laion_aesthetics_65plus/."])
+    subprocess.run(["mv", file, "OUR_DATASETS_DIR/laion_aesthetics_65plus/."])
