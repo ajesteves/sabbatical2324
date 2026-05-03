@@ -20,9 +20,9 @@ lr_map_network:             0.1       # Learning rate applied in the mapping net
 lr_disc_mult:               1.5       # Scaling factor applied to the generator LR to obtain the discriminator LR.
 relative_disc_losses:       False     # Use discriminator losses relative to mean value of the discriminator output (True) or absolute losses (False).
 path_length_regulation:     True      # Apply a path length regularization term to the generator loss (True) or not (False).
-pl_every_steps:             20        # Interval (in steps) between sucessive applications of the path length regularization term.
+pl_every_steps:             20        # Interval (in steps) between successive applications of the path length regularization term.
 contrastive_regulation:     False     # Apply a contrastive regularization term to the discriminator loss (True) or not (False).
-gp_every_steps:             4         # Interval (in steps) between sucessive applications of the gradient penalty term to the discriminator loss.
+gp_every_steps:             4         # Interval (in steps) between successive applications of the gradient penalty term to the discriminator loss.
 latent_dim:                 512       # Latent vectors dimension.
 vq_disc_layers:             []        # List with IDs of the discriminator layers to apply vector quantization. Example: [1,2].
 vq_codebook_size:           256       # Number of possible values that the vectorization/discretization can assume.
@@ -41,7 +41,7 @@ num_workers:                None      # Number of workers used in the dataset Da
 checkp_interval:            5         # Interval between saving model checkpoints (in epochs).
 log_interval:               100       # Interval between successive logs (in steps).
 evaluate_every_steps:       1000      # Interval between evaluations (in steps). 
-generate:                   False     # Generate images ONLY with a pretrained model (True) or train the model (False).
+generate:                   False     # Generate images ONLY with a pre-trained model (True) or train the model (False).
 grid_size:                  5         # At every evaluation step, generate a grid of images with size: grid_size x grid_size. 
 num_grids_generate:         1         # Number of grids of images to generate at every evaluation step.     
 generate_interpolation:     False     # Generate an interpolation video between two random points in latent space (True) or not (False).

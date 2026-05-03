@@ -44,7 +44,7 @@ def _convert_input_type_range(img):
     Convert the type and range of the input image.
 
     It converts the input image to np.float32 type and range of [0, 1].
-    It is mainly used for pre-processing the input image in colorspace
+    It is mainly used for pre-processing the input image in color space
     conversion functions such as rgb2ycbcr and ycbcr2rgb.
 
     Args:
@@ -75,7 +75,7 @@ def _convert_output_type_range(img, dst_type):
     images will be converted to np.uint8 type with range [0, 255]. If
     `dst_type` is np.float32, it converts the image to np.float32 type with
     range [0, 1].
-    It is mainly used for post-processing images in colorspace conversion
+    It is mainly used for post-processing images in color space conversion
     functions such as rgb2ycbcr and ycbcr2rgb.
 
     Args:
@@ -355,11 +355,11 @@ if __name__ == '__main__':
         #
         #sr_dir = './results/ESRGAN_Div2k_Flickr2k_06_stage2/test_div2k_300_interpolated_generator_alpha_0_90/sr'
         #sr_dir = './results/ESRGAN_Div2k_Flickr2k_06_stage2/test_div2k_300_gan_generator/sr'
-        #hr_dir = '/home/datasets/div2k_300/hr'
+        #hr_dir = 'OUR_DATASETS_DIR/div2k_300/hr'
 
         #sr_dir = './results/ESRGAN_Div2k_Flickr2k_02_stage2/test_set14_interpolated_generator_alpha_0_00/sr'
         #sr_dir = './results/ESRGAN_Div2k_Flickr2k_02_stage2/test_set14_gan_generator/sr'
-        #hr_dir = '/home/datasets/SR_benchmarks/Set14/GTmod12'
+        #hr_dir = 'OUR_DATASETS_DIR/Set14/GTmod12'
 
         psnr1 = 0.0
         ssim1 = 0.0

@@ -7,7 +7,7 @@ g_hidden_dim:          64      # Number of channels in generator hidden layers.
 crop_size:             108     # Size used to crop original images of the dataset.
 z_dim:                 100     # size of z latent vector (size of generator input).
 lambda_gp:             10      # Loss weight for gradient penalty.
-k:                     1       # Value subtracted from gradients norm in fradient penalty.
+k:                     1       # Value subtracted from gradients norm in gradient penalty.
 lr:                    0.0002  # Learning rate for optimizers.
 beta1:                 0.5     # beta1 hyperparameter for Adam optimizers.
 beta2:                 0.999   # beta2 hyperparameter for Adam optimizers.
@@ -16,6 +16,6 @@ epochs:                100      # Number of training epochs.
 log_interval:          100     # Interval between successive logs (in iterations).
 sampling_interval:     1       # Interval between image generations during training (in epochs).
 checkp_interval:       5       # Interval between saving model checkpoints (in epochs).
-experiment_name:   "DRAGAN_CelebA_128x128_v4_01A"  # Name of the experiment.
+experiment_name:   "DRAGAN_CelebA_128x128_01"  # Name of the experiment.
 dataset_path:      "OUR_DATASETS_DIR/celeba_50k/img_align_celeba"   # Root directory for dataset.
-dataset:           "CelebA 50k"                    # Dataset used for training the models.
+dataset:           "CelebA 50k"                # Dataset used for training the models.
