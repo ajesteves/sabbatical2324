@@ -5,6 +5,10 @@ from torchmetrics.image.fid import FrechetInceptionDistance
 #--------------------------------------------------------------------------
 # GIVEN A NPY FILE WITH REAL IMAGES AND ANOTHER NPY FILE WITH GENERATED IMAGES,
 # CALCULATES THE FRECHET INCEPTION DISTANCE.
+# 
+# TODO:
+# * Modify 'file_real_images'
+# * Modify 'file_generated_images'
 # --------------------------------------------------------------------------
 
 def load_npy_as_tensor(file_images):

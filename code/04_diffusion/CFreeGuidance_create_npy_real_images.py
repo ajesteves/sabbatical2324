@@ -6,6 +6,9 @@ from PIL import Image
 # =========================================================================
 # (i)   Select a specified number of files of each class from a dataset,
 # (ii)  make a NPY file with all the selected files.
+#
+# TODO:
+# * In 'main' function, modify 'dataset_path' and 'npy_file'.
 # =========================================================================
 
 def create_image_dataset(dataset_path, nclasses, files_per_class, npy_file):

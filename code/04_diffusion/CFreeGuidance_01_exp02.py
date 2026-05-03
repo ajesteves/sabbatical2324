@@ -1995,8 +1995,8 @@ def main():
                 project = 'OUR_WANDB_PROJECT_ID',
                 entity  = 'OUR_WANDB_ENTITY',
                 config  = config_wandb,
-                id      = config.experiment.experiment_name,
-                resume  = 'allow',
+                #id      = config.experiment.experiment_name, # TO CONTINUE LOGGING AFTER TRAINING WAS STOPPED 
+                #resume  = 'allow',                           # TO CONTINUE LOGGING AFTER TRAINING WAS STOPPED
             )
 
         # Train the model

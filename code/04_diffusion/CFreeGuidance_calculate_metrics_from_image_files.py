@@ -5,6 +5,9 @@ import torch_fidelity
 GIVEN A FOLDER WITH REAL IMAGES AND ANOTHER FOLDER WITH GENERATED IMAGES,
 CALCULATES THE INCEPTION SCORE, THE FRECHET INCEPTION DISTANCE, AND THE
 KERNEL INCEPTION DISTANCE.
+
+TODO:
+* Modify arguments 'input1 and 'input2' of 'torch_fidelity.calculate_metrics'.
 --------------------------------------------------------------------------
 
 isc_splits      (int): Number of splits in ISC. Default: `10`.

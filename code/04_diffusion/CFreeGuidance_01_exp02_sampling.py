@@ -13,6 +13,14 @@
 # Adapted by:
 #
 #    Antonio Esteves @ UMinho, April 2025
+#
+# TODO:
+#
+# * Modify `'OUR_WANDB_PROJECT_ID'`
+# * Modify `'OUR_WANDB_ENTITY'`
+# * In `get_celeba_config`function, modify `experiment.experiment_name`, 
+#   `experiment.root_dir`, `data.data_path`, `sampling.saved_model`.
+#
 # ==============================================================================
 
 import os
@@ -2007,8 +2015,8 @@ def main():
                 project = 'OUR_WANDB_PROJECT_ID',
                 entity  = 'OUR_WANDB_ENTITY',
                 config  = config_wandb,
-                id      = config.experiment.experiment_name,
-                resume  = 'allow',
+                #id      = config.experiment.experiment_name, # TO CONTINUE LOGGING AFTER TRAINING WAS STOPPED 
+                #resume  = 'allow',                           # TO CONTINUE LOGGING AFTER TRAINING WAS STOPPED
             )
 
         # Train the model
