@@ -33,4 +33,4 @@ exp_params:
   pixelcnn_learning_rate: 1e-3
   pixelcnn_num_epochs: 100
   pixelcnn_save_model: True
-  pixelcnn_save_file: "PixelCNN_CelebA_128x128_04A"
+  pixelcnn_save_file: "PixelCNN_CelebA_128x128_04"
