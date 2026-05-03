@@ -62,8 +62,8 @@
         "overwrite_data_path":   true,
         "log": {
             "log_type":          "wandb",
-            "wandb_entity":      "OUR_WANDB_USER",
-            "wandb_project":     "dalle2",
+            "wandb_entity":      "OUR_WANDB_ENTITY",
+            "wandb_project":     "OUR_WANDB_PROJECT_ID",
             "wandb_resume":      false,
             "verbose":           false
         },

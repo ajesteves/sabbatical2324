@@ -19,7 +19,7 @@ dataset:
   drop_last:              True
   precomputed_embeddings: True
 train:
-  epochs:                 20          # UNet 1 trained X epochs, UNet 2 trained Y epeochs
+  epochs:                 20          # UNet 1 trained X epochs, UNet 2 trained Y epochs
   epoch_restart:          1           # to resume/continue an interrupted training (default=1)
   step_restart:           0           # to resume/continue an interrupted training (default=0)
   batch_size:             256
