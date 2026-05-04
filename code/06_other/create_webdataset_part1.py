@@ -1,6 +1,10 @@
 '''
 Create a CSV file with all pairs (image file name, caption) 
-of Aesthetics 6.5+ Webdataset.
+of the LAION Aesthetics 6.5+ Webdataset.
+
+TODO:
+* Requires the LAION Aesthetics 6.5+ files (jpg, txt, json).
+* Modify 'input_dir', 'output_dir'.
 '''
 from   img2dataset import download
 import shutil

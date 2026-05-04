@@ -1,7 +1,13 @@
 '''
-Create tar files corresponding to Webdataset format containing 
-a selected number (8192) of pairs (image file name, caption) from 
-the Aesthetics 6.5+ dataset.
+Create TAR files corresponding to Webdataset format containing 
+a selected number (8192) of pairs (image file name, caption) 
+from the LAION Aesthetics 6.5+ dataset.
+
+TODO:
+* Requires the LAION Aesthetics 6.5+ files (jpg, txt, json).
+* Requires a CSV file with all pairs (image file name, caption)
+  of LAION Aesthetics 6.5+ Webdataset.
+* Modify 'input_dir', 'output_dir', 'csv_file'.
 '''
 from   img2dataset import download
 import shutil

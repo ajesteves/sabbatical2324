@@ -1,5 +1,8 @@
 '''
-Download Aesthetics 6.5+ Webdataset
+Download LAION Aesthetics 6.5+ Webdataset.
+
+TODO:
+* Modify "OUR_DATASETS_DIR/laion_aesthetics_65plus/."
 '''
 import os
 import subprocess
