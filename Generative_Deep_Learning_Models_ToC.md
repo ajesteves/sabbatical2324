@@ -1,8 +1,10 @@
-#  Generative Deep Learning Models, from Theory to Practice
+# Generative Deep Learning Models, from Theory to Practice
+
 ## Antonio Joaquim Andre Esteves
+
 ## May 2026
 
-#  Contents
+# Contents
 
 1. **Introduction**
 
@@ -20,8 +22,8 @@
 
 **Part 3. Generative Adversarial Networks**
 
-8.  Introduction to Generative Adversarial Networks
-9.  Improving the Generative Adversarial Networks Training Method
+8. Introduction to Generative Adversarial Networks
+9. Improving the Generative Adversarial Networks Training Method
 10. Improving the Generative Adversarial Network Architecture
 11. Generative Adversarial Network for High-Quality Images: ProGAN
 12. Generative Adversarial Network for High-Quality Images: StyleGAN
@@ -44,14 +46,20 @@
 23. CogView
 24. Stable Diffusion
 25. Stable Diffusion XL
-
 26. **Conclusions**
 
 A. VQ-VAE Implementation
+
 B. VQ-VAE2 Implementation
+
 C. Deep Convolutional Generative Adversarial Network Implementation
+
 D. Progressive Growing Generative Adversarial Network Implementation
+
 E. Enhanced Super-Resolution Generative Adversarial Network Implementation
+
 F. Denoising Diffusion Probabilistic Model Implementation
+
 G. Noise Conditional Score Network Implementation
+
 H. Denoising Diffusion Implicit Model Sampler Implementation
