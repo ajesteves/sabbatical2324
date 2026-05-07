@@ -1,8 +1,6 @@
 # Generative Deep Learning Models, from Theory to Practice
 
-## Antonio Joaquim Andre Esteves
-
-## May 2026
+### Antonio Joaquim Andre Esteves, May 2026
 
 # Contents
 

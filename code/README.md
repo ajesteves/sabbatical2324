@@ -1,8 +1,7 @@
-
 This folder contains a collection of notebooks and scripts that support the book "Generative Deep Learning Models, from Theory to Practice".
 The code is organized in the following way:
 
-01. Essential Probability Theory
+1. Essential Probability Theory
 
 - probability distributions
 - grid and MCMC posterior approximation
@@ -16,14 +15,14 @@ The code is organized in the following way:
 - posterior predictive uncertainty in Pyro
 - stochastic variational inference in Pyro
 
-02. Variational Autoencoders
+2. Variational Autoencoders
 
 - VAE
 - CVAE
 - VQ-VAE
 - VQ-VAE-2
 
-03. Generative Adversarial Networks
+3. Generative Adversarial Networks
 
 - GAN
 - DCGAN
@@ -36,7 +35,7 @@ The code is organized in the following way:
 - StyleGAN2
 - ESRGAN
 
-04. Diffusion Models
+4. Diffusion Models
 
 - denoising diffusion probabilistic model (DDPM)
 - probability flow ODE of Langevin dynamics
@@ -45,7 +44,7 @@ The code is organized in the following way:
 - noise conditional score network (NCSN)
 - NCSN++
 
-05. Text-to-Image Generative Models
+5. Text-to-Image Generative Models
 
 - contrastive language-image pre-training (CLIP)
 - GLIDE
@@ -54,6 +53,6 @@ The code is organized in the following way:
 - Stable Diffusion
 - Stable Diffusion XL (SDXL)
 
-06. Other
+6. Other
 
 - Utilities related to datasets.
