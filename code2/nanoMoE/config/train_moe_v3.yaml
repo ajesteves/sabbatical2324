@@ -1,0 +1,74 @@
+# Configuration for training baseline model on two GPUs.
+
+# Input/Output
+out_dir:                'results'
+eval_interval:           500
+log_interval:            10
+eval_iters:              200
+eval_only:               False     # if True, script exits right after the first eval
+always_save_checkpoint:  True      # if True, always save a checkpoint after each eval
+init_from:               'resume' # 'scratch' or 'resume' or 'gpt2*'
+
+# wandb logging
+wandb_log:             True         # False # disabled by default
+wandb_project:         'moe_based_on_gpt2'
+wandb_run_name:        'moe-auxloss-zloss-'  # + time.strftime('%Y-%m-%d %H:%M:%S')
+
+# Data related parameters
+
+# These parameters make the total batch size to be 122.8k.
+# batch size * block size * gradient accumulation steps* GPUs
+# 6 * 768 * 10 * 2 : 92,160
+
+dataset:               'openwebtext'
+data_path:             'data/openwebtext/'
+n_gpu:                 2
+batch_size:            6 # if gradient_accumulation_steps > 1, this is the micro-batch size
+block_size:            768
+gradient_accumulation_steps:  10 ########### ALTER TO 5*n_gpu ###############
+
+# Base model parameters (use a smaller model than the original GP2)
+n_layer:               6 
+n_head:                6
+n_embd:                384
+dropout:               0.0   # for pretraining 0 is good, for finetuning try 0.1+
+bias:                  False # do we use bias inside LayerNorm and Linear layers?
+
+# MoE parameters
+n_exp:                 8 # if n_exp : 1 we just use regular MLP layers
+top_k:                 2
+use_aux_loss:          True
+aux_loss_weight:       0.01
+use_router_z_loss:     True
+router_z_loss_weight:  0.001
+use_noisy_top_k:       False
+train_capacity:        1.25
+eval_capacity:         2.0
+min_capacity:          4
+stride:                2
+use_switch_tfm_init:   False
+router_use_full_prec:  False
+switch_tfm_init_scale: 1.0  # recommended 0.1 for stability (pg.10, https://arxiv.org/abs/2101.03961)
+
+# AdamW optimizer parameters
+# this makes the number of tokens to be 12.2B
+max_iters:       100000 # total number of training iterations
+learning_rate:   0.0006 # max learning rate
+weight_decay:    0.1
+beta1:           0.9
+beta2:           0.95
+grad_clip:       1.0    # clip gradients at this value, or disable if :: 0.0
+
+# Learning rate decay parameters
+decay_lr :       True    # whether to decay the learning rate
+warmup_iters:    2000    # how many steps to warm up for
+lr_decay_iters:  50000   # should be ~ max_iters per Chinchilla
+min_lr:          0.00006 # minimum learning rate, should be ~: learning_rate/10 per Chinchilla
+
+# DDP parameters
+backend:  'nccl' # 'nccl' | 'gloo'
+
+# System parameters
+device:   'cuda' # examples: 'cpu', 'cuda', 'cuda:0', 'cuda:1' etc., or try 'mps' on macbooks
+dtype:    'bfloat16'
+compile:  False # use PyTorch 2.0 to compile the model to be faster
